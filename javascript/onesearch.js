@@ -9,35 +9,75 @@ Auther: Fan Bin
     var engines = [
         {
             engine:"谷歌",
-            keywords:["google","guge"],
+            keywords:["google","guge","谷歌"],
             url:"http://www.google.com.hk/",
             action:"http://www.google.com.hk/search",
+            query:"",
             name:"q",
             img:"image/google.png"
         },
         {
             engine:"百度",
-            keywords:["baidu"],
+            keywords:["baidu","百度"],
             url:"http://www.baidu.com/",
             action:"http://www.baidu.com/s",
+            query:"",
             name:"wd",
             img:"image/baidu.png"
         },
         {
             engine:"淘宝",
-            keywords:["taobao","tb"],
+            keywords:["taobao","tb","淘宝"],
             url:"http://www.taobao.com/",
             action:"http://s.taobao.com/search",
+            query:"",
             name:"q",
             img:"image/taobao.png"
         },
         {
             engine:"天猫",
-            keywords:["tmall","tianmao","tm"],
+            keywords:["tmall","tianmao","tm","天猫"],
             url:"http://www.tmall.com/",
             action:"http://list.tmall.com/search_product.htm",
+            query:"",
             name:"q",
             img:"image/tmall.png"
+        },
+        {
+            engine:"微博",
+            keywords:["weibo","wb","微博"],
+            url:"http://weibo.com/",
+            action:"",
+            query:"http://s.weibo.com/weibo/{query}",
+            name:"",
+            img:"image/weibo.png"
+        },
+        {
+            engine:"维基百科",
+            keywords:["wiki","维基"],
+            url:"http://www.wikipedia.com/",
+            action:"",
+            query:"http://zh.wikipedia.org/wiki/{query}",
+            name:"",
+            img:"image/wiki.png"
+        },
+        {
+            engine:"知乎",
+            keywords:["zhihu","知乎"],
+            url:"http://www.zhihu.com/",
+            action:"http://www.zhihu.com/search",
+            query:"",
+            name:"q",
+            img:"image/zhihu.png"
+        },
+        {
+            engine:"StackOverFlow",
+            keywords:["sof", "stackoverflow"],
+            url:"http://www.stackoverflow.com/",
+            action:"http://stackoverflow.com/search ",
+            query:"",
+            name:"q",
+            img:"image/stackoverflow.png"
         }
     ];
     
@@ -96,19 +136,20 @@ Auther: Fan Bin
             
             if(code==32) {//space
                 
-                console.log("space pressed");
-                
-                findEngine(getInput());
-                
-                console.log(currEngine.name);
-                
-                if(currEngine!=null){
-                    //add
-                    $this.css("background-image","url("+currEngine.img+")").css("padding-left","100px");
-                    setInput(getInput().substr(key.length+1));
-                    $this.attr("name",currEngine.name);
-                    $form.attr("action",currEngine.action);
+                if(currEngine==null){
+                    
+                    findEngine(getInput());
+                    
+                    if(currEngine!=null){
+                        //add
+                        $this.css("background-image","url("+currEngine.img+")").css("padding-left","100px");
+                        setInput(getInput().substr(key.length+1));
+                        $this.attr("name",currEngine.name);
+                        $form.attr("action",currEngine.action);
+                    }
+                    
                 }
+                    
             } else if(code==8) {//backspace
                 
                 console.log("backspace pressed");
@@ -128,10 +169,16 @@ Auther: Fan Bin
         });
         
         $form.submit(function(){
+            
             if(currEngine==null){
                 $form.attr("action","http://www.google.com.hk/search");
                 $this.attr("name","q");
+            } else if((currEngine.action==null||currEngine.action=="")&&currEngine.query!=""){
+                var destination = currEngine.query.replace("{query}", getInput());
+                window.open(destination);
+                return false;
             }
+            
             setInput(getInput().replace(/(^\s*)|(\s*$)/g, ""));
         })
         
