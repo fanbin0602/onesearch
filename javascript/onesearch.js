@@ -11,6 +11,7 @@ Auther: Fan Bin
             engine:"谷歌",
             keywords:["google","guge","谷歌"],
             url:"http://www.google.com.hk/",
+            charset:"utf-8",
             action:"http://www.google.com.hk/search",
             query:"",
             name:"q",
@@ -20,6 +21,7 @@ Auther: Fan Bin
             engine:"百度",
             keywords:["baidu","百度"],
             url:"http://www.baidu.com/",
+            charset:"utf-8",
             action:"http://www.baidu.com/s",
             query:"",
             name:"wd",
@@ -29,6 +31,7 @@ Auther: Fan Bin
             engine:"淘宝",
             keywords:["taobao","tb","淘宝"],
             url:"http://www.taobao.com/",
+            charset:"utf-8",
             action:"http://s.taobao.com/search",
             query:"",
             name:"q",
@@ -38,6 +41,7 @@ Auther: Fan Bin
             engine:"天猫",
             keywords:["tmall","tianmao","tm","天猫"],
             url:"http://www.tmall.com/",
+            charset:"gbk",
             action:"http://list.tmall.com/search_product.htm",
             query:"",
             name:"q",
@@ -47,6 +51,7 @@ Auther: Fan Bin
             engine:"微博",
             keywords:["weibo","wb","微博"],
             url:"http://weibo.com/",
+            charset:"utf-8",
             action:"",
             query:"http://s.weibo.com/weibo/{query}",
             name:"",
@@ -56,6 +61,7 @@ Auther: Fan Bin
             engine:"维基百科",
             keywords:["wiki","维基"],
             url:"http://www.wikipedia.com/",
+            charset:"utf-8",
             action:"",
             query:"http://zh.wikipedia.org/wiki/{query}",
             name:"",
@@ -65,6 +71,7 @@ Auther: Fan Bin
             engine:"知乎",
             keywords:["zhihu","知乎"],
             url:"http://www.zhihu.com/",
+            charset:"utf-8",
             action:"http://www.zhihu.com/search",
             query:"",
             name:"q",
@@ -74,6 +81,7 @@ Auther: Fan Bin
             engine:"StackOverFlow",
             keywords:["sof", "stackoverflow"],
             url:"http://www.stackoverflow.com/",
+            charset:"utf-8",
             action:"http://stackoverflow.com/search ",
             query:"",
             name:"q",
@@ -146,6 +154,7 @@ Auther: Fan Bin
                         setInput(getInput().substr(key.length+1));
                         $this.attr("name",currEngine.name);
                         $form.attr("action",currEngine.action);
+                        $form.attr("ccept-charset",currEngine.charset);
                     }
                     
                 }
