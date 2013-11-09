@@ -104,7 +104,7 @@ Auther: Fan Bin
                 
                 if(currEngine!=null){
                     //add
-                    $this.css("background-image","url("+currEngine.img+")").css("padding-left","110px");
+                    $this.css("background-image","url("+currEngine.img+")").css("padding-left","100px");
                     setInput(getInput().substr(key.length+1));
                     $this.attr("name",currEngine.name);
                     $form.attr("action",currEngine.action);
