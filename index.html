@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ONE search</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no">
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+        <link rel="stylesheet" href="stylesheet/base.css" />
+        <link rel="stylesheet" href="stylesheet/style.css" />
+        <script src="javascript/jquery-2.0.3.min.js"></script>
+        <script src="javascript/onesearch.js"></script>
+        <script>
+            $(function(){
+                $("#search_input").onesearch();
+            });
+            setInterval(function(){
+                $('#info').fadeOut(1000,function(){
+                    $(this).fadeIn(1000).children().first().appendTo(this);
+                });
+            },3000);
+        </script>
+    </head>
+    <body>
+        <header>
+        </header>
+        <div id="logo">
+            <img src="image/logo.jpg" alt="ONE search" width="300xpx" />
+        </div>
+        <div id="wrapper">
+            <form id="fm" action="" method="get">
+                <input form="fm" id="search_input" type="text" name="" autocomplete="off" />
+            </form>
+        </div>
+        <div id="info">
+        </div>
+    </body>
+</html>
