@@ -68,7 +68,9 @@ Auther: Fan Bin
             
             var code = event.which?event.which:event.keyCode;
             
-            alert(code);
+            if(code==13) {//enter
+                $form.submit();
+            }
             
             if(code==32) {//space
                 
