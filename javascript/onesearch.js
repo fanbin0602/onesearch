@@ -6,90 +6,16 @@ Auther: Fan Bin
 
 (function($){
     
-    var engines = [
-        {
-            engine:"谷歌",
-            keywords:["google","guge","谷歌"],
-            url:"http://www.google.com.hk/",
-            charset:"utf-8",
-            action:"http://www.google.com.hk/search",
-            query:"",
-            name:"q",
-            img:"image/google.png"
-        },
-        {
-            engine:"百度",
-            keywords:["baidu","百度"],
-            url:"http://www.baidu.com/",
-            charset:"utf-8",
-            action:"http://www.baidu.com/s",
-            query:"",
-            name:"wd",
-            img:"image/baidu.png"
-        },
-        {
-            engine:"淘宝",
-            keywords:["taobao","tb","淘宝"],
-            url:"http://www.taobao.com/",
-            charset:"utf-8",
-            action:"http://s.taobao.com/search",
-            query:"",
-            name:"q",
-            img:"image/taobao.png"
-        },
-        {
-            engine:"天猫",
-            keywords:["tmall","tianmao","tm","天猫"],
-            url:"http://www.tmall.com/",
-            charset:"gbk",
-            action:"http://list.tmall.com/search_product.htm",
-            query:"",
-            name:"q",
-            img:"image/tmall.png"
-        },
-        {
-            engine:"微博",
-            keywords:["weibo","wb","微博"],
-            url:"http://weibo.com/",
-            charset:"utf-8",
-            action:"",
-            query:"http://s.weibo.com/weibo/{query}",
-            name:"",
-            img:"image/weibo.png"
-        },
-        {
-            engine:"维基百科",
-            keywords:["wiki","维基"],
-            url:"http://www.wikipedia.com/",
-            charset:"utf-8",
-            action:"",
-            query:"http://zh.wikipedia.org/wiki/{query}",
-            name:"",
-            img:"image/wiki.png"
-        },
-        {
-            engine:"知乎",
-            keywords:["zhihu","知乎"],
-            url:"http://www.zhihu.com/",
-            charset:"utf-8",
-            action:"http://www.zhihu.com/search",
-            query:"",
-            name:"q",
-            img:"image/zhihu.png"
-        },
-        {
-            engine:"StackOverFlow",
-            keywords:["sof", "stackoverflow"],
-            url:"http://www.stackoverflow.com/",
-            charset:"utf-8",
-            action:"http://stackoverflow.com/search ",
-            query:"",
-            name:"q",
-            img:"image/stackoverflow.png"
-        }
-    ];
+    var engines;
     
-    console.log(engines);
+    $.ajax({
+        async:false,
+        url:"./json/engines.json",
+        dataType:"json",
+        success:function(data){
+            engines = data;
+        }
+    });
     
     $.fn.onesearch = function(){
         
@@ -146,7 +72,7 @@ Auther: Fan Bin
                 
                 if(currEngine==null){
                     
-                    findEngine(getInput());
+                    findEngine(getInput().toLowerCase());
                     
                     if(currEngine!=null){
                         //add
@@ -160,8 +86,6 @@ Auther: Fan Bin
                 }
                     
             } else if(code==8) {//backspace
-                
-                console.log("backspace pressed");
                 
                 if(lastLen==0&&currEngine!=null){
                     //remove
