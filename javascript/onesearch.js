@@ -70,6 +70,7 @@ Auther: Fan Bin
             
             if(code==13) {//enter
                 $form.submit();
+                return false;
             }
             
             if(code==32) {//space

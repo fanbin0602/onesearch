@@ -41,3 +41,29 @@ input:focus{
         width:200px;
     }
 }
+
+#view_on_github{
+    position:fixed;
+    top:0px;
+    left:5%;
+    background-color:#333;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    padding:10px;
+}
+#view_on_github a:link{
+    color:#ccc;
+    text-decoration:none;
+}
+#view_on_github a:visited{
+    color:#ccc;
+    text-decoration:none;
+}
+#view_on_github a:hover{
+    color:#fff;
+    text-decoration:underline;
+}
+#view_on_github a:active{
+    color:#ccc;
+    text-decoration:none;
+}
